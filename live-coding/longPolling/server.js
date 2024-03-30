@@ -1,10 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 let posts = [];
+const waitingClients = [];
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -19,13 +22,21 @@ app.get("/script.js", (req, res) => {
 });
 
 app.get("/api/posts", (req, res) => {
-  res.json({ posts });
+  if (req.query.longPolling === "true") {
+    waitingClients.push(res);
+  } else {
+    res.json({ posts });
+  }
 });
 
 app.post("/api/post", (req, res) => {
   const { user, text } = req.body;
   const newPost = { user, text, timestamp: new Date() };
   posts.push(newPost);
+
+  waitingClients.forEach((client) => {
+    client.json({ posts });
+  });
 
   res.json({ success: true });
 });
