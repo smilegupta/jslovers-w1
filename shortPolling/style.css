@@ -1,0 +1,82 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#feed-container {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.post-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+strong {
+  color: #4285f4;
+}
+
+#post-form {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#post-input {
+  width: 70%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+#post-input:focus {
+  border-color: #4285f4;
+  outline: none;
+}
+
+button {
+  width: 29%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #357ae8;
+}
+
+button:active {
+  background-color: #25569e;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  #post-input {
+    width: 60%;
+  }
+
+  button {
+    width: 35%;
+  }
+}
