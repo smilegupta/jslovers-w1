@@ -12,13 +12,14 @@ function randomNameGenerator() {
   return names[Math.floor(Math.random() * names.length)];
 }
 
-async function fetchPosts(pollRequest = "false") {
+async function fetchPosts(pollRequest = false) {
   try {
     const response = await fetch("/api/posts?longPolling=" + pollRequest);
     const { posts } = await response.json();
     displayPosts(posts);
 
-    setTimeout(fetchPosts(true), 3000);
+
+    setTimeout(fetchPosts(true), 10000);
   } catch (error) {
     console.error("Error fetching posts:", error);
   }
